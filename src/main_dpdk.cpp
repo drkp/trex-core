@@ -4346,6 +4346,10 @@ COLD_FUNC int  CGlobalTRex::device_prob_init(void){
          m_port_cfg.m_port_conf.rxmode.mtu = dev_info.max_rx_pktlen;
     }
 
+    if (m_port_cfg.m_port_conf.rxmode.mtu > 1500) {
+        m_port_cfg.m_port_conf.rxmode.mtu = 1500;
+    }
+
     uint16_t tx_queues = get_dpdk_mode()->dp_rx_queues();
      int dp_cores = CGlobalInfo::m_options.preview.getCores();
 
